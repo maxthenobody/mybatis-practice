@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>MyBatis 실습문제 1</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -101,7 +101,7 @@ body {
 		$("#btnSelectAll").click(
 				function() {
 					$.ajax({
-						url : "member/selectAll",
+						url : "/member/selectAll",
 						success : function(data) {
 							displayData(data);
 						},
@@ -182,6 +182,5 @@ body {
 			}
 		}
 	</script>
-
 </body>
 </html>
