@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,12 @@ body {
 	padding: 2rem;
 }
 </style>
+<script>
+	<c:if test="${not empty msg}">
+		alert("${msg}");
+		<c:remove var="msg"/>
+	</c:if>
+</script>
 </head>
 <body>
 	<div class="container">
@@ -101,8 +108,11 @@ body {
 		$("#btnSelectAll").click(
 				function() {
 					$.ajax({
-						url : "/member/selectAll",
+						url : "${pageContext.request.contextPath}/member/selectAll",
+						dataType: "json",
 						success : function(data) {
+							console.log(data);
+							console.log(data.length);
 							displayData(data);
 						},
 						error : function() {
@@ -116,7 +126,8 @@ body {
 				function() {
 					const userId = $("#searchId").val();
 					$.ajax({
-						url : "member/searchById",
+						url : "${pageContext.request.contextPath}/member/searchById",
+						dataType: "json",
 						data : {
 							userId : userId
 						},
@@ -134,7 +145,8 @@ body {
 				function() {
 					const name = $("#searchName").val();
 					$.ajax({
-						url : "member/searchMember",
+						url : "${pageContext.request.contextPath}/member/searchMember",
+						dataType: "json",
 						data : {
 							searchName : name
 						},

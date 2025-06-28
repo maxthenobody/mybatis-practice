@@ -15,17 +15,17 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public Member selectMemberById(SqlSession session, String userId) {
-		return null;
+		return session.selectOne("member.selectMemberById", userId);
 	}
 
 	@Override
 	public int inserMember(SqlSession session, Member m) {
-		return 0;
+		return session.insert("member.insertMember", m);
 	}
 
 	@Override
 	public List<Member> selectMemberByName(SqlSession session, String name) {
-		return null;
+		return session.selectList("member.selectMemberByName", name);
 	}
 
 }

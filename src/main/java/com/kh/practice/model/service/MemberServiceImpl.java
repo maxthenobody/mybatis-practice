@@ -16,6 +16,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<Member> selectAllMember() {
 		SqlSession session = SqlSessionTemplate.getSession();
 		List<Member> list = dao.selectAllMember(session);
+//		System.out.println(list);
 		session.close();
 		
 		return list;
@@ -23,17 +24,35 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member selectMemberById(String userId) {
-		return null;
+		SqlSession session = SqlSessionTemplate.getSession();
+		Member member = dao.selectMemberById(session, userId);
+		session.close();
+		
+		return member;
 	}
 
 	@Override
 	public int inserMember(Member m) {
-		return 0;
+		SqlSession session = SqlSessionTemplate.getSession();
+		int result = dao.inserMember(session, m);
+		if (result > 0) {
+			session.commit();
+		} else {
+			session.rollback();
+		}
+		session.close();
+		
+		return result;
 	}
 
 	@Override
 	public List<Member> selectMemberByName(String name) {
-		return null;
+		SqlSession session = SqlSessionTemplate.getSession();
+		List<Member> list = dao.selectMemberByName(session, name);
+//		System.out.println(list);
+		session.close();
+		
+		return list;
 	}
 
 }

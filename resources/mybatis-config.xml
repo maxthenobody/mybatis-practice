@@ -28,8 +28,8 @@
 	</environments>
 	
 	<mappers>
-		<mapper resource="/mapper/board-mapper.xml"/>
-		<mapper resource="/mapper/member-mapper.xml"/>
+		<mapper resource="/mappers/board-mapper.xml"/>
+		<mapper resource="/mappers/member-mapper.xml"/>
 	</mappers>
 	<!-- 
 		이전 실습 파일을 참고하여 필요한 속성들을 등록. 

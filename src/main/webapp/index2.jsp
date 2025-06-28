@@ -47,7 +47,7 @@ body {
 				</c:forEach>
 			</tbody>
 		</table>
-		<form action="search" method="get" class="row g-2 align-items-center mb-4">
+		<form action="${pageContext.request.contextPath}/board/search" method="get" class="row g-2 align-items-center mb-4">
 			<div class="col-auto">
 				<select name="searchKey" class="form-select">
 					<option value="title">제목</option>
