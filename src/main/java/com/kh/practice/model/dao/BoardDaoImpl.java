@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.kh.practice.model.vo.Board;
+import com.kh.practice.model.vo.Reply;
 
 public class BoardDaoImpl implements BoardDao {
 
@@ -16,7 +17,11 @@ public class BoardDaoImpl implements BoardDao {
 
 	@Override
 	public Board selectBoardByNo(SqlSession session, int boardNo) {
-		return session.selectOne("board.selectBoardByNo", boardNo);
+		Board b = session.selectOne("board.selectBoardByNo", boardNo);
+		List<Reply> rList = session.selectList("board.selectReplyByNo", boardNo);
+		b.setReplyList(rList);
+		
+		return b;
 	}
 
 	@Override
